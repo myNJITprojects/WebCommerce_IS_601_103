@@ -1,0 +1,30 @@
+.NavB {
+    margin: 0;
+    padding: 0;
+    background: url('../img/backgroundimg.gif') center/cover no-repeat fixed;
+    /* Replace 'your-gif-file.gif' with the path to your GIF */
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Additional styling for content if needed */
+.content {
+    text-align: center;
+    color: white;
+}
+
+.navbar-nav {
+    background-color: blueviolet;
+}
+
+h1 {
+    color: blueviolet;
+    text-align: center;
+}
+
+body{
+    background-color: plum;
+}
