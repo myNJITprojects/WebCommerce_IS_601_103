@@ -44,6 +44,18 @@ const paths = new Array(
 
 const produtDetail = '[{"price":500, "material":"Cotton", "origin":"Italian"}, {"price":600, "material":"Lether", "origin":"France"}, {"price":700, "material":"Polyester", "origin":"Colombia"}, {"price":800, "material":"Cotton", "origin":"USA"}, {"price":900, "material":"Lether", "origin":"Uzbekistan"}, {"price":1000, "material":"Polyester", "origin":"Indonesia"}]';
 
+
+async function fetchProducts(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+}  
+
 function setImgTags(imgPaths){
 
     const completePaths = new Array();
@@ -78,17 +90,15 @@ function addDivButtonCart(){
 }
 
 function setDetailProcut(products){
-
     const jsonProducts = JSON.parse(products);
-
     const dProducts = new Array();
 
     for(p=0; p<jsonProducts.length; p++){
 
         htmlList =`<ul>
             <li>Price: ${jsonProducts[p]["price"]}</li>
-            <li>Material: ${jsonProducts[p]["material"]}</li>
-            <li>Origin: ${jsonProducts[p]["origin"]}</li>
+            <li>Material: ${jsonProducts[p]["title"]}</li>
+            <li>Origin: ${jsonProducts[p]["description"]}</li>
             </ul>`;
 
         dProducts.push(htmlList);
@@ -107,12 +117,53 @@ function addDivProducts(products){
     }
 }
 
+// function createDivs(divsClass,idPrefix){
+//     const divs = new Array();
+
+//     for(r=0;r<2;r++){
+//         var newdiv = document.createElement('div');
+//         newdiv.className=divsClass;
+//         newdiv.id = `"${idPrefix}${r}"`;
+//         divs.push(newdiv);
+//     }
+    
+//     return divs;
+// }
+
+// function addDivRows(){
+//     const newDivs = createDivs(divsClass="row",idPrefix="rr");
+
+//     for (i=0; i< newDivs.length; i++){
+//         document.getElementById("TEST").appendChild(newDivs[i]);
+//     }
+// }
+
+// function addDivsCols(){
+//     const newDivs = createDivs(divsClass="col-md-4 listedItem", idPrefix="c");
+
+
+//     var targetDivs = document.getElementsByClassName("row")
+//     for (i=0; i< newDivs.length; i++){
+//         targetDivs[i].appendChild(newDivs[i]);
+//     }
+// }
+
+// function setTestDivs(){
+//     addDivRows();
+//     addDivsCols();
+// }
+
 
 function setupPage()
 {
     addNavBar(navBarCode);
+    // setTestDivs();
     addDivButtonCart();
     addDivImage(paths);
-    addDivProducts(produtDetail);
 
+    var url = "http://34.229.91.169:8000/products/?format=json"
+    var x = fetchProducts(url);
+    console.log(x.value)
+
+    addDivProducts(produtDetail);
 }
