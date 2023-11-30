@@ -19,4 +19,21 @@ header {
     margin-right: 10px;
     
 }
-  
+
+.listedItem{
+    border: 5px solid blue;
+}
+
+/* #A {
+    border: 5px solid #FF0000;
+}
+#B {
+    border: 5px solid greenyellow;
+}
+#C {
+    border: 5px solid blue;
+} */
+
+#rr0{
+    border: 10px solid red;
+}
