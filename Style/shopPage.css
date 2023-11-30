@@ -1,12 +1,11 @@
 .navbar-nav {
-    background-color: purple;
+    background-color: rgb(236, 68, 236);
 }
 
 
 header {
       margin: 0;
       padding: 0;
-      height: 75vh;
       justify-content: center;
 }
 
@@ -19,5 +18,15 @@ header {
     height: 40px; /* Adjust the height of the image */
     margin-right: 10px;
     
+}
+
+#A{
+    background-color: aqua;
+}
+#B{
+    background-color: yellow
+}
+#C{
+    background-color: green;
 }
   
