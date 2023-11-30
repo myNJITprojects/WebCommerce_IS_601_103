@@ -33,14 +33,57 @@ const navBarCode = `
         </nav>
 </div>`
 
+const divBottonCart=`
+<div>
+    <button type="button" class="btn btn-primary">Add to Cart</button>
+</div>`
+
+function setImgTags(imgPaths){
+
+    const completePaths = new Array();
+
+    for(p=0;p<imgPaths.length;p++){
+        completePaths.push(`<div> <img src="${imgPaths[p]}"> </div>`);
+    }
+    return completePaths;
+}
+
+function addDivImage(){
+    const paths = new Array(
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/1.png",
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/2.png",
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/3.png",
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/4.png",
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/5.png",
+        "/home/jarvis/Development/WebCommerce_IS_601_103/img/6.png"
+    );
+
+    const newPaths = setImgTags(paths);
+
+    var divs = document.getElementsByClassName("imgProduct")
+    for (i=0; i< divs.length; i++){
+        divs[i].innerHTML = newPaths[i];
+    }
+}
+
+
 
 function addNaBar(navBarCode){
     document.getElementById("headerPage")
         .insertAdjacentHTML("afterend", navBarCode);
 }
 
+function addDivButtonCart(BottonCart){
+    var divs = document.getElementsByClassName("buttonCart")
+    for (i=0; i< divs.length; i++){
+        divs[i].innerHTML = BottonCart;
+    }
+}
+
 function setupPage()
 {
     addNaBar(navBarCode);
+    addDivButtonCart(divBottonCart);
+    addDivImage();
 
 }
