@@ -1,17 +1,5 @@
 import fetch from 'node-fetch';
 
-
-// API endpoint for creating a new user
-var url = "http://34.229.91.169:8000/products/"
-
-
- // Form data to be sent in the request body
- const formData = {
-    title: 'Gato',
-    description: 'White and Black Cat',
-    price: 500,
-};
-
 async function postProduct(product, url) {
     
   const formData = product;
@@ -38,6 +26,18 @@ async function postProduct(product, url) {
       console.error('Error:', error);
     });
 }
+
+
+// API endpoint for creating a new product
+var url = "http://34.229.91.169:8000/products/"
+
+
+ // JSON for endpoint
+ const formData = {
+    title: 'Gato',
+    description: 'White and Black Cat',
+    price: 500,
+};
 
 
 postProduct(formData, url)
