@@ -1,12 +1,11 @@
 .navbar-nav {
-    background-color: purple;
+    background-color: rgb(236, 68, 236);
 }
 
 
 header {
       margin: 0;
       padding: 0;
-      height: 75vh;
       justify-content: center;
 }
 
