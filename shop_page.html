@@ -1,76 +1,60 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CozyGo</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-
-<body>
-    <link rel="stylesheet" href="./Style/otherstylesheet.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha384-GLhlTQ8i04FZ5L5M3Zxrj5qz6p0NLU/Q8YIhAKP5qNfH5qnNf1C1djU5b2F804QF" crossorigin="anonymous">
-    <link rel="icon" type="image/png" href="./img/icons8-sweater-icongeek26-outline-gradient-32.png">
-
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CozyGo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./Style/shopPage.css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            integrity="sha384-GLhlTQ8i04FZ5L5M3Zxrj5qz6p0NLU/Q8YIhAKP5qNfH5qnNf1C1djU5b2F804QF" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="./img/icons8-sweater-icongeek26-outline-gradient-32.png">
     </head>
 
-    <body>
-        <header>
-            <header>
-                <div class="NavB">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand" href="#" style="color: blueviolet;">
-                            <img src="./img/icons8-sweater-64.png" width="30" height="30" alt="Your Logo">
-                            CozyGo
-                        </a>
-            
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-            
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./index.html">Home</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Browse</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
-                            </ul>
-                            
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./cart_page.html">
-                                        <i class="fas fa-shopping-cart"></i> ❄️
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+    <body onload="setupPage()">
+        
+            <header id="headerPage">
+                <!-- Nav Bar gets included here by js -->
             </header>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+            <div class="container" id="productDisplay">
+                <div class="row">
+                    <div class="col-md-4" id="A">
+                        <p>Hello</p>
+                    </div>
+                    <div class="col-md-4" id="B">
+                        <p>From</p>
+                    </div>
+                    <div class="col-md-4" id="C">
+                        <p>Boostrap</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" id="A">
+                        <p>Hello</p>
+                    </div>
+                    <div class="col-md-4" id="B">
+                        <p>From</p>
+                    </div>
+                    <div class="col-md-4" id="C">
+                        <p>Boostrap</p>
+                    </div>
+                </div>
+                <!-- Products Get included here by js -->
+               
+
+            </div>
 
 
+            <script src="htmlSetup.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-        <script src="" async defer></script>
     </body>
 
 </html>
