@@ -20,8 +20,14 @@ header {
     
 }
 
+.imgProduct, .detailProductm, .buttonCart{
+    justify-content: center;
+    align-items: center;
+
+}
+
 .listedItem{
-    border: 5px solid blue;
+    border: 2px solid lightblue;
 }
 
 /* #A {
@@ -34,6 +40,6 @@ header {
     border: 5px solid blue;
 } */
 
-#rr0{
+#conWrapper{
     border: 10px solid red;
 }
