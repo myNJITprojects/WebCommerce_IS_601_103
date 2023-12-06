@@ -22,6 +22,7 @@ header {
 
 .listedItem{
     border: 5px solid blue;
+    height: 350px;
 }
 
 /* #A {
@@ -36,4 +37,9 @@ header {
 
 #rr0{
     border: 10px solid red;
+}
+
+.imageProduct{
+    height: 100px;
+    width: 100px;
 }

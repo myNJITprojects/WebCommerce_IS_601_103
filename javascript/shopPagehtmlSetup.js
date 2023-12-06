@@ -34,12 +34,16 @@ const navBarCode = `
 </div>`;
 
 const paths = new Array(
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/1.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/2.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/3.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/4.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/5.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/6.png"
+    
+    "./img/1.png",
+    "./img/2.png",
+    "./img/3.png",
+    "./img/4.png",
+    "./img/5.png",
+    "./img/6.png",
+    "./img/7.png",
+    "./img/8.png",
+
 );
 
 const produtDetail = '[{"price":500, "material":"Cotton", "origin":"Italian"}, {"price":600, "material":"Lether", "origin":"France"}, {"price":700, "material":"Polyester", "origin":"Colombia"}, {"price":800, "material":"Cotton", "origin":"USA"}, {"price":900, "material":"Lether", "origin":"Uzbekistan"}, {"price":1000, "material":"Polyester", "origin":"Indonesia"}]';
@@ -61,7 +65,9 @@ function setImgTags(imgPaths){
     const completePaths = new Array();
 
     for(p=0;p<imgPaths.length;p++){
-        completePaths.push(`<div> <img src="${imgPaths[p]}"> </div>`);
+        console.log(typeof imgPaths[p])
+        console.log(imgPaths[p])
+        completePaths.push(`<div> <img src=${imgPaths[p]}> </div>`);
     }
     return completePaths;
 }
