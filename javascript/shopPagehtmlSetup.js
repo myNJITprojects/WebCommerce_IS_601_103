@@ -15,7 +15,7 @@ const navBarCode = `
                         <a class="nav-link" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Browse</a>
+                        <a class="nav-link" href="#">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -25,7 +25,12 @@ const navBarCode = `
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./cart_page.html">
-                            <i class="fas fa-shopping-cart"></i> ❄️
+                            <table>
+                                <tr>
+                                    <td>Shopping Cart:</td>
+                                    <td id="ItemCountCart" style="padding-left: 10px;">0</td>
+                                </tr>   
+                            </table>
                         </a>
                     </li>
                 </ul>
@@ -49,6 +54,7 @@ async function fetchProducts(url) {
     try {
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data.length)
       return data;
 
     } catch (error) {
@@ -81,15 +87,26 @@ function addNavBar(navBarCode){
 }
 
 function addDivButtonCart(){
-    const divBottonCart=`<div> <button type="button" class="btn btn-primary">Add to Cart</button> </div>`;
+
+    // Get divs in page, and based on number of divs add n buttons
+    // Also set the button's id, but increment by 1 to match product ID at the moment.
 
     var divs = document.getElementsByClassName("buttonCart")
     for (i=0; i< divs.length; i++){
-        divs[i].innerHTML = divBottonCart;
+        divs[i].innerHTML = `
+        <div>
+            <button 
+                type="button" class="btn btn-primary"
+                onclick="addtoCart()"
+                id="${i+1}"
+            >
+            Add to Cart
+            </button>
+        </div>`;
     }
 }
 
-function setDetailProcut(products){
+function setDetailProduct(products){
     const jsonProducts = JSON.parse(products);
     const dProducts = new Array();
 
@@ -109,12 +126,22 @@ function setDetailProcut(products){
 
 function addDivProducts(products){
 
-    const htmlProducts = setDetailProcut(products);
+    const htmlProducts = setDetailProduct(products);
 
     var divs = document.getElementsByClassName("detailProduct")
     for (i=0; i< divs.length; i++){
         divs[i].innerHTML = htmlProducts[i];
     }
+}
+
+
+function addtoCart(){
+    console.log("Add to Cart pressed!");
+    var counter = document.getElementById("ItemCountCart");
+    var currentVal = counter.innerHTML;
+    var newVal = parseInt(currentVal) + 1;
+    counter.innerHTML = newVal;
+
 }
 
 // function createDivs(divsClass,idPrefix){
@@ -163,6 +190,7 @@ function setupPage()
 
     var url = "http://34.229.91.169:8000/products/?format=json"
     var x = fetchProducts(url);
+    console.log(x.length)
     console.log(x.value)
 
     addDivProducts(produtDetail);
