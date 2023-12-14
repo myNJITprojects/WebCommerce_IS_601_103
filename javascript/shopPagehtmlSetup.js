@@ -38,43 +38,45 @@ const navBarCode = `
         </nav>
 </div>`;
 
-const paths = new Array(
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/1.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/2.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/3.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/4.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/5.png",
-    "/home/jarvis/Development/WebCommerce_IS_601_103/img/6.png"
-);
+// const paths = new Array(
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/1.png",
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/2.png",
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/3.png",
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/4.png",
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/5.png",
+//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/6.png"
+// );
 
-const produtDetail = '[{"price":500, "material":"Cotton", "origin":"Italian"}, {"price":600, "material":"Lether", "origin":"France"}, {"price":700, "material":"Polyester", "origin":"Colombia"}, {"price":800, "material":"Cotton", "origin":"USA"}, {"price":900, "material":"Lether", "origin":"Uzbekistan"}, {"price":1000, "material":"Polyester", "origin":"Indonesia"}]';
+// const produtDetail = '[{"price":500, "material":"Cotton", "origin":"Italian"}, {"price":600, "material":"Lether", "origin":"France"}, {"price":700, "material":"Polyester", "origin":"Colombia"}, {"price":800, "material":"Cotton", "origin":"USA"}, {"price":900, "material":"Lether", "origin":"Uzbekistan"}, {"price":1000, "material":"Polyester", "origin":"Indonesia"}]';
 
 
 async function fetchProducts(url) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data.length)
+      console.log("Fetching data from API.",url);
       return data;
 
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching products from API:', error);
     }
 }  
 
-function setImgTags(imgPaths){
-
+async function setImgTags(imgPaths){
+    console.log("Creating <div> and <img> tags with image paths");
     const completePaths = new Array();
 
-    for(p=0;p<imgPaths.length;p++){
-        completePaths.push(`<div> <img src="${imgPaths[p]}"> </div>`);
+    for(var p=0;p<imgPaths.length;p++){
+        completePaths.push(`<div> <img src="${imgPaths[p]["imgurl"]}"> </div>`);
     }
     return completePaths;
 }
 
-function addDivImage(paths){
-    const newPaths = setImgTags(paths);
+async function addDivImage(paths){
+    console.log("Setting images for display.");
+    const newPaths = await setImgTags(paths);
 
+    console.log("Appending <div> <img> to DOM body.")
     var divs = document.getElementsByClassName("imgProduct")
     for (i=0; i< divs.length; i++){
         divs[i].innerHTML = newPaths[i];
@@ -82,36 +84,16 @@ function addDivImage(paths){
 }
 
 function addNavBar(navBarCode){
-    document.getElementById("headerPage")
-        .insertAdjacentHTML("afterend", navBarCode);
+    console.log("Appending navigational bar on Shop Page.");
+    document.getElementById("headerPage").insertAdjacentHTML("afterend", navBarCode);
 }
 
-function addDivButtonCart(){
-
-    // Get divs in page, and based on number of divs add n buttons
-    // Also set the button's id, but increment by 1 to match product ID at the moment.
-
-    var divs = document.getElementsByClassName("buttonCart")
-    for (i=0; i< divs.length; i++){
-        divs[i].innerHTML = `
-        <div>
-            <button 
-                type="button" class="btn btn-primary"
-                onclick="addtoCart()"
-                id="${i+1}"
-            >
-            Add to Cart
-            </button>
-        </div>`;
-    }
-}
-
-function setDetailProduct(products){
-    const jsonProducts = JSON.parse(products);
+async function setDetailProduct(products){
+    const jsonProducts = products;
     const dProducts = new Array();
 
     for(p=0; p<jsonProducts.length; p++){
-
+        console.log(`Creating <ul> and <li> tags populated for product ${jsonProducts[p]["id"]}`);
         htmlList =`<ul>
             <li>Price: ${jsonProducts[p]["price"]}</li>
             <li>Material: ${jsonProducts[p]["title"]}</li>
@@ -124,74 +106,70 @@ function setDetailProduct(products){
     return dProducts;
 }
 
-function addDivProducts(products){
+async function addDivProducts(products){
+    console.log("Setting prodcuts details.")
+    const htmlProducts = await setDetailProduct(products);
 
-    const htmlProducts = setDetailProduct(products);
-
+    console.log("Appending <div> <img> to DOM body.")
     var divs = document.getElementsByClassName("detailProduct")
     for (i=0; i< divs.length; i++){
         divs[i].innerHTML = htmlProducts[i];
     }
 }
 
+function addDivButtonCart(){
+    // Get divs in page, and based on number of divs add n buttons
+    // Also set the button's id, but increment by 1 to match product ID at the moment.
 
-function addtoCart(){
-    console.log("Add to Cart pressed!");
-    var counter = document.getElementById("ItemCountCart");
-    var currentVal = counter.innerHTML;
-    var newVal = parseInt(currentVal) + 1;
-    counter.innerHTML = newVal;
+    var divs = document.getElementsByClassName("buttonCart")
+    for (i=0; i< divs.length; i++){
+        console.log(`Creating button for product: ${i+1}.`);
+        divs[i].innerHTML = `
+        <div>
+            <button 
+                type="button" class="btn btn-primary"
+                onclick="addtoCart(this)"
+                id="${i+1}"
+            >
+            Add to Cart
+            </button>
+        </div>`;
+    }
+}
+
+function addtoCart(button){
+    
+    console.log(`Button for product ${buttonId}, pressed.`);
+
+    var buttonId = button.id;
+    var counterVal = document.getElementById("ItemCountCart");
+    var val = parseInt(counterVal.innerHTML) + 1;
+    counterVal.innerHTML = val;
+
+    productSelected.push(buttonId);
+    console.warn(`Products in Shopping cart: ${productSelected}`);
 
 }
 
-// function createDivs(divsClass,idPrefix){
-//     const divs = new Array();
+// Global VAR 
+// Holding products selected via button.
+let productSelected = new Array();
 
-//     for(r=0;r<2;r++){
-//         var newdiv = document.createElement('div');
-//         newdiv.className=divsClass;
-//         newdiv.id = `"${idPrefix}${r}"`;
-//         divs.push(newdiv);
-//     }
-    
-//     return divs;
-// }
-
-// function addDivRows(){
-//     const newDivs = createDivs(divsClass="row",idPrefix="rr");
-
-//     for (i=0; i< newDivs.length; i++){
-//         document.getElementById("TEST").appendChild(newDivs[i]);
-//     }
-// }
-
-// function addDivsCols(){
-//     const newDivs = createDivs(divsClass="col-md-4 listedItem", idPrefix="c");
-
-
-//     var targetDivs = document.getElementsByClassName("row")
-//     for (i=0; i< newDivs.length; i++){
-//         targetDivs[i].appendChild(newDivs[i]);
-//     }
-// }
-
-// function setTestDivs(){
-//     addDivRows();
-//     addDivsCols();
-// }
-
-
-function setupPage()
+async function setupPage()
 {
+    console.warn("Part 1");
     addNavBar(navBarCode);
-    // setTestDivs();
-    addDivButtonCart();
-    addDivImage(paths);
 
+    console.warn("Part 2");
     var url = "http://34.229.91.169:8000/products/?format=json"
-    var x = fetchProducts(url);
-    console.log(x.length)
-    console.log(x.value)
+    var apiResponse = await fetchProducts(url);
 
-    addDivProducts(produtDetail);
+    console.warn("Part 3");
+    await addDivImage(apiResponse);
+    
+    console.warn("Part 4");
+    await addDivProducts(apiResponse);
+    
+    console.warn("Part 5");
+    addDivButtonCart();
 }
