@@ -38,17 +38,6 @@ const navBarCode = `
         </nav>
 </div>`;
 
-// const paths = new Array(
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/1.png",
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/2.png",
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/3.png",
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/4.png",
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/5.png",
-//     "/home/jarvis/Development/WebCommerce_IS_601_103/img/6.png"
-// );
-
-// const produtDetail = '[{"price":500, "material":"Cotton", "origin":"Italian"}, {"price":600, "material":"Lether", "origin":"France"}, {"price":700, "material":"Polyester", "origin":"Colombia"}, {"price":800, "material":"Cotton", "origin":"USA"}, {"price":900, "material":"Lether", "origin":"Uzbekistan"}, {"price":1000, "material":"Polyester", "origin":"Indonesia"}]';
-
 
 async function fetchProducts(url) {
     try {
@@ -147,6 +136,10 @@ function addtoCart(button){
     counterVal.innerHTML = val;
 
     productSelected.push(buttonId);
+    
+    // Store arrya of products on localStorgare var
+    localStorage.setItem('myProductsArray', JSON.stringify(productSelected));
+
     console.warn(`Products in Shopping cart: ${productSelected}`);
 
 }
@@ -172,4 +165,12 @@ async function setupPage()
     
     console.warn("Part 5");
     addDivButtonCart();
+}
+
+async function cartPage()
+{
+    console.warn("Part 1");
+    addNavBar(navBarCode);
+
+    console.log(JSON.parse(localStorage.getItem("myProductsArray")));
 }
