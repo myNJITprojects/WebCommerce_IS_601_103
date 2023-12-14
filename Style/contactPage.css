@@ -1,0 +1,51 @@
+.navbar-nav {
+    background-color: rgb(236, 68, 236);
+}
+
+
+header {
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+}
+
+.navbar-brand {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+.navbar-brand img {
+    width: 40px; /* Adjust the width of the image */
+    height: 40px; /* Adjust the height of the image */
+    margin-right: 10px;
+    
+}
+
+.imgProduct, .detailProductm, .buttonCart{
+    justify-content: center;
+    align-items: center;
+
+}
+
+.listedItem{
+    border: 2px solid lightblue;
+}
+
+#contact-info {
+    width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgb(236, 68, 236);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 50px; /* Set the default font size */
+}
+
+h2 {
+    font-size: 190px; /* Increase the font size for the company name */
+}
+
+p {
+    font-size: 16px; /* Increase the font size for paragraphs */
+    margin: 10px 0; /* Add some margin for better spacing */
+}
