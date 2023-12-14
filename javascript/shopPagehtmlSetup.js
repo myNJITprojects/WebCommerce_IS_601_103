@@ -174,5 +174,5 @@ async function cartPage()
 
     var productsLit = JSON.parse(localStorage.getItem("myProductsArray"));
 
-    document.getElementsByClassName("productsLit")
+    document.getElementsByClassName(productsLit)
 }
