@@ -18,7 +18,7 @@ const navBarCode = `
                         <a class="nav-link" href="#">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="./contact_page.html">Contact</a>
                     </li>
                 </ul>
                 

@@ -15,17 +15,22 @@ const navBarCode = `
                         <a class="nav-link" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Browse</a>
+                        <a class="nav-link" href="./shop_page.html">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./contact_page.html">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
                 
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./cart_page.html">
-                            <i class="fas fa-shopping-cart"></i> ❄️
+                            <table>
+                                <tr>
+                                    <td>Shopping Cart:</td>
+                                    <td id="ItemCountCart" style="padding-left: 10px;">0</td>
+                                </tr>   
+                            </table>
                         </a>
                     </li>
                 </ul>
@@ -34,25 +39,14 @@ const navBarCode = `
 </div>`;
 
 
-
-async function fetchProducts(url) {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    }
-} 
-
 function addNavBar(navBarCode){
-    document.getElementById("headerPage")
-        .insertAdjacentHTML("afterend", navBarCode);
+    console.log("Appending navigational bar on Shop Page.");
+    document.getElementById("headerPage").insertAdjacentHTML("afterend", navBarCode);
 }
 
 
-function setupPage()
+async function setupPage()
 {
+    console.warn("Part 1");
     addNavBar(navBarCode);
 }
