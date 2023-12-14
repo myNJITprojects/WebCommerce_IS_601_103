@@ -172,5 +172,7 @@ async function cartPage()
     console.warn("Part 1");
     addNavBar(navBarCode);
 
-    console.log(JSON.parse(localStorage.getItem("myProductsArray")));
+    var productsLit = JSON.parse(localStorage.getItem("myProductsArray"));
+
+    document.getElementsByClassName("productsLit")
 }
